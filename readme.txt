@@ -39,6 +39,9 @@ This is first plugin version. You need just install it.
 2. The edit post page meta box with fields created on settings page
 
 == Changelog ==
+* Version 1.0beta :
+	* Added support for multi-language
+	* Added RU translation
 * Version 0.9beta :
 	* First version beta
 	

@@ -253,6 +253,9 @@ class Just_Field_Upload extends Just_Field{
 				array('jquery','media-upload','thickbox')
 			);
 		wp_enqueue_script('jcf_uploadmedia');
+
+		// add text domain
+		wp_localize_script( 'jcf_uploadmedia', 'jcf_textdomain', jcf_get_language_strings() );
 	}
 	
 	function add_css(){

@@ -41,6 +41,12 @@ add_action('plugins_loaded', 'jcf_init');
 function jcf_init(){
 	if( !is_admin() ) return;
 	
+	/**
+	 *	load translations
+	 */
+	load_plugin_textdomain( JCF_TEXTDOMAIN, false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+	
+	// init global variables
 	global $jcf_fields, $jcf_fieldsets;
 	
 	// add admin page

@@ -136,7 +136,7 @@ class Just_Field{
 							</div>
 							<div class="alignright">
 								<?php echo print_loader_img(); ?>
-								<input type="submit" value="Save" class="button-primary" name="savefield">
+								<input type="submit" value="<?php _e('Save', JCF_TEXTDOMAIN); ?>" class="button-primary" name="savefield">
 							</div>
 							<br class="clear"/>
 						</div>
