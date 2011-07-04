@@ -7,7 +7,7 @@ Requires at least: 3.0.0
 Tested up to: 3.1.4
 Donate link: http://justcoded.com/just-labs/just-custom-fields-for-wordpress-plugin/
 Plugin URI: http://justcoded.com/just-labs/just-custom-fields-for-wordpress-plugin/
-Version: 0.9beta
+Version: 1.0beta
 Stable tag: 0.9beta
 
 This plugin add custom fields for standard and custom post types in WordPress.
