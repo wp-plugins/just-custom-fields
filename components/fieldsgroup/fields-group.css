@@ -1,0 +1,56 @@
+.postbox div.form-field .jcf-fieldsgroup-field {
+	-moz-border-radius:4px 4px 4px 4px;
+	border:1px solid #DFDFDF;
+	padding:5px 5px 40px;
+	background:#fff;
+}
+.jcf-fieldsgroup-field .jcf-fieldsgroup-row{
+	width:100%;
+	overflow:hidden;
+	position:relative;
+	padding:7px 0;
+	border-bottom:1px dotted #999;
+}
+.jcf-fieldsgroup-field .jcf-delete-layer{
+	position:absolute;
+	top:0;
+	left:0;
+	display:none;
+	width:100%;
+	height:80px;
+}
+
+.jcf-fieldsgroup-field .jcf-delete-layer img{
+	position:absolute;
+	top:38px;
+	left:46px;
+}
+.jcf-fieldsgroup-field .jcf-delete-layer a{
+	position:absolute;
+	top:67px;
+	left:255px;
+}
+.jcf-fieldsgroup-field a.jcf-btn{
+	background:#EEEEEE url("../../../../../wp-admin/images/white-grad-active.png") repeat-x scroll left top;
+	line-height:15px;
+	padding:3px 10px;
+	white-space:nowrap;
+	text-shadow:0 1px 0 #FFFFFF;
+	border-color:#BBBBBB;
+	-moz-border-radius:11px 11px 11px 11px;
+	-moz-box-sizing:content-box;
+	border-style:solid;
+	border-width:1px;
+	cursor:pointer;
+	font-size:11px !important;
+	display:block;
+	float:left;
+	margin:0 10px 0 0;
+	text-decoration:none;
+}
+.jcf-fieldsgroup-field a.jcf_add_more{
+	margin:10px 10px 0 0;
+}
+.jcf-fieldsgroup-field .jcf-fieldsgroup-row a:hover{
+	color:#D54E21;
+}
