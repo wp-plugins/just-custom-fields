@@ -4,7 +4,7 @@ Tags: custom, fields, custom fields, term meta, meta, post meta, object meta, ed
 Author URI: http://justcoded.com/
 Author: Alexander Prokopenko
 Requires at least: 3.0.0
-Tested up to: 3.1.4
+Tested up to: 3.2
 Donate link: http://justcoded.com/just-labs/just-custom-fields-for-wordpress-plugin/
 Plugin URI: http://justcoded.com/just-labs/just-custom-fields-for-wordpress-plugin/
 Version: 1.0
