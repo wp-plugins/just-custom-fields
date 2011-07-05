@@ -11,7 +11,7 @@
 	$imgfile = $_GET['image'];
 	$new_size = explode('x', $_GET['size']);
 	$qty = !empty($_GET['qty'])? (int)$_GET['qty'] : 95;
-	
+
 	// get wp dir, include wp functions
 	$dirname = str_replace('\\', '/', dirname(__FILE__));
 	$wp_dir = array_shift( explode('/wp-content/', $dirname) );
@@ -32,7 +32,8 @@
 	if( is_file($thumbfile) ){
 		//$src = get_bloginfo('home') . '/' . basename($thumbfile);
 		header('Content-Type: '.$filetype['type']);
-		readfile( $thumbfile );
+		$imgcontent = file_get_contents($thumbfile);
+		echo $imgcontent;
 		exit;
 	}
 
@@ -41,6 +42,7 @@
 	// check directory exists
 	if( !is_dir($cachedir) ){
 		if( !mkdir( $cachedir, 0777 ) ){
+			pa('ay',1);
 			e404("can't create cache dir");
 		}
 		@chmod($cachedir, 0777);
@@ -53,7 +55,6 @@
 
 	// copy image content into temp filename
 	$tmpfname = tempnam($cachedir, "tmp.");
-	unlink($tmpfname);
 	$tmpfname = str_replace('\\', '/', $tmpfname);
 	
 	$tmpfname .= '.'.$ext;
@@ -65,13 +66,23 @@
 	// create file
 	$thumb = image_resize($tmpfname, $new_size[0], $new_size[1], '', '', dirname($thumbfile), $qty);
 	unlink($tmpfname);
-
+	
+	if( !is_string($thumb) && !empty($thumb->errors) ){
+		// print original image
+		header('Content-Type: '.$filetype['type']);
+		echo $imgcontent;
+		exit;
+		//pa($thumb,1);
+		e404("error resize");
+	}
+	
 	// rename file to correct name
 	@chmod($thumb, 0777);
 	rename($thumb, $thumbfile);
 
 	// print image
 	header('Content-Type: '.$filetype['type']);
-	readfile( $thumbfile );
+	$imgcontent = file_get_contents($thumbfile);
+	echo $imgcontent;
 	exit;
 ?>

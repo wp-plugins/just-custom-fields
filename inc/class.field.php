@@ -103,7 +103,7 @@ class Just_Field{
 	function do_form(){
 		ob_start();
 		
-		$op = ($this->id_base == $this->id)? __('Add') : __('Edit');
+		$op = ($this->id_base == $this->id)? __('Add', JCF_TEXTDOMAIN) : __('Edit', JCF_TEXTDOMAIN);
 		?>
 		<div class="jcf_edit_field">
 			<h3 class="header"><?php echo $op . ' ' . $this->title; ?></h3>
@@ -122,21 +122,21 @@ class Just_Field{
 							$slug = esc_attr($this->slug);
 						?>
 						<p>
-							<label for="<?php echo $this->get_field_id('slug'); ?>"><?php _e('Slug:'); ?></label>
+							<label for="<?php echo $this->get_field_id('slug'); ?>"><?php _e('Slug:', JCF_TEXTDOMAIN); ?></label>
 							<input class="widefat" id="<?php echo $this->get_field_id('slug'); ?>" name="<?php echo $this->get_field_name('slug'); ?>" type="text" value="<?php echo $slug; ?>" />
-							<br/><small><?php _e('Machine name, will be used for postmeta field name.'); ?></small>
+							<br/><small><?php _e('Machine name, will be used for postmeta field name.', JCF_TEXTDOMAIN); ?></small>
 						</p>
 						
 						<div class="field-control-actions">
 							<div class="alignleft">
-								<?php if( $op != __('Add') ) : ?>
-								<a href="#remove" class="field-control-remove"><?php _e('Delete'); ?></a> |
+								<?php if( $op != __('Add', JCF_TEXTDOMAIN) ) : ?>
+								<a href="#remove" class="field-control-remove"><?php _e('Delete', JCF_TEXTDOMAIN); ?></a> |
 								<?php endif; ?>
-								<a href="#close" class="field-control-close"><?php _e('Close'); ?></a>
+								<a href="#close" class="field-control-close"><?php _e('Close', JCF_TEXTDOMAIN); ?></a>
 							</div>
 							<div class="alignright">
 								<?php echo print_loader_img(); ?>
-								<input type="submit" value="Save" class="button-primary" name="savefield">
+								<input type="submit" value="<?php _e('Save', JCF_TEXTDOMAIN); ?>" class="button-primary" name="savefield">
 							</div>
 							<br class="clear"/>
 						</div>
@@ -164,7 +164,7 @@ class Just_Field{
 		
 		// validate: title should be always there
 		if( empty($input['title']) ){
-			return array('status' => '0', 'error' => __('Title field is required.'));
+			return array('status' => '0', 'error' => __('Title field is required.', JCF_TEXTDOMAIN));
 		}
 		
 		// get values from real class:
@@ -324,7 +324,7 @@ class Just_Field{
 	 * @param array $instance Current settings
 	 */
 	function form($instance) {
-		echo '<p class="no-options-field">' . __('There are no options for this field.') . '</p>';
+		echo '<p class="no-options-field">' . __('There are no options for this field.', JCF_TEXTDOMAIN) . '</p>';
 		return 'noform';
 	}
 	

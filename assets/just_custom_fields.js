@@ -5,7 +5,6 @@ jQuery(document).ready(function(){
 	initFieldsetsEdit();
 	initAjaxBoxClose();
 	initFieldsetFields();
-	
 })
 
 /**
@@ -42,7 +41,7 @@ function initFieldsetsEdit(){
 	// delete
 	jQuery('#jcf_fieldsets a.jcf_fieldset_delete').click(function(){
 		
-		if( confirm("Are you sure you want to delete the fieldset?\nAll fields will be also deleted!") )
+		if( confirm( jcf_textdomain.confirm_fieldset_delete ) )
 		{
 			var f_id = jQuery(this).attr('rel');
 			var data = {
@@ -157,8 +156,8 @@ function initFieldsetFields(){
 				html += '	<td class="check-column"><span class="drag-handle">move</span></td>';
 				html += '<td><strong><a href="#" rel="' + response.id + '">' + response.instance.title + '</a></strong>';
 				html += '	<div class="row-actions">';
-				html += '		<span class="edit"><a href="#" rel="' + response.id + '">Edit</a></span> |';
-				html += '		<span class="delete"><a href="#" rel="' + response.id + '">Delete</a></span>';
+				html += '		<span class="edit"><a href="#" rel="' + response.id + '">'+ jcf_textdomain.edit +'</a></span> |';
+				html += '		<span class="delete"><a href="#" rel="' + response.id + '">'+ jcf_textdomain.delete +'</a></span>';
 				html += '	</div>';
 				html += '</td>';
 				html += '<td>'+response.instance.slug+'</td>';
@@ -180,7 +179,7 @@ function initFieldsetFields(){
 	
 	// delete button
 	jQuery('#jcf_fieldsets tbody span.delete a').live('click', function(){
-		if( confirm('Are you sure you want to delete selected field?') ){
+		if( confirm( jcf_textdomain.confirm_field_delete ) ){
 			var row = jQuery(this).parents('tr:first');
 			var f_id = jQuery(this).parents('tbody:first').attr('id').replace('the-list-', '');
 			var data = {

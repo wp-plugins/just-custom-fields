@@ -4,7 +4,7 @@
 	function jcf_ajax_add_fieldset(){
 		$title = strip_tags(trim($_POST['title']));
 		if( empty($title) ){
-			jcf_ajax_reposnse( array('status' => "0", 'error'=>__('Title field is required.')) );
+			jcf_ajax_reposnse( array('status' => "0", 'error'=>__('Title field is required.', JCF_TEXTDOMAIN)) );
 		}
 
 		$slug = sanitize_title( $title );
@@ -12,7 +12,7 @@
 		
 		// check exists
 		if( isset($fieldsets[$slug]) ){
-			jcf_ajax_reposnse( array('status' => "0", 'error'=>__('Such fieldset already exists.')) );
+			jcf_ajax_reposnse( array('status' => "0", 'error'=>__('Such fieldset already exists.', JCF_TEXTDOMAIN)) );
 		}
 		
 		// create fiedlset
@@ -29,7 +29,7 @@
 	function jcf_ajax_delete_fieldset(){
 		$f_id = $_POST['fieldset_id'];
 		if( empty($f_id) ){
-			//jcf_ajax_reposnse( array('status' => "0", 'error'=>__('Wrong params passed.')) );
+			//jcf_ajax_reposnse( array('status' => "0", 'error'=>__('Wrong params passed.', JCF_TEXTDOMAIN)) );
 		}
 		
 		jcf_fieldsets_update($f_id, NULL);
@@ -44,22 +44,22 @@
 		ob_start();
 		?>
 		<div class="jcf_edit_fieldset">
-			<h3 class="header"><?php echo __('Edit Fieldset:') . ' ' . $fieldset['title']; ?></h3>
+			<h3 class="header"><?php echo __('Edit Fieldset:', JCF_TEXTDOMAIN) . ' ' . $fieldset['title']; ?></h3>
 			<div class="jcf_inner_content">
 				<form action="#" method="post" id="jcform_edit_fieldset">
 					<fieldset>
 						<input type="hidden" name="fieldset_id" value="<?php echo $fieldset['id']; ?>" />
 						
-						<p><label for="jcf_edit_fieldset_title"><?php _e('Title:'); ?></label> <input class="widefat" id="jcf_edit_fieldset_title" type="text" value="<?php echo esc_attr($fieldset['title']); ?>" /></p>
+						<p><label for="jcf_edit_fieldset_title"><?php _e('Title:', JCF_TEXTDOMAIN); ?></label> <input class="widefat" id="jcf_edit_fieldset_title" type="text" value="<?php echo esc_attr($fieldset['title']); ?>" /></p>
 						
 						<div class="field-control-actions">
 							<div class="alignleft">
-								<a href="#remove" class="field-control-remove"><?php _e('Delete'); ?></a> |
-								<a href="#close" class="field-control-close"><?php _e('Close'); ?></a>
+								<a href="#remove" class="field-control-remove"><?php _e('Delete', JCF_TEXTDOMAIN); ?></a> |
+								<a href="#close" class="field-control-close"><?php _e('Close', JCF_TEXTDOMAIN); ?></a>
 							</div>
 							<div class="alignright">
 								<?php echo print_loader_img(); ?>
-								<input type="submit" value="Save" class="button-primary" name="savefield">
+								<input type="submit" value="<?php _e('Save', JCF_TEXTDOMAIN); ?>" class="button-primary" name="savefield">
 							</div>
 							<br class="clear"/>
 						</div>
@@ -77,12 +77,12 @@
 		$f_id = $_POST['fieldset_id'];
 		$fieldset = jcf_fieldsets_get($f_id);
 		if(empty($fieldset)){
-			jcf_ajax_reposnse( array('status' => "0", 'error'=>__('Wrong data passed.')) );
+			jcf_ajax_reposnse( array('status' => "0", 'error'=>__('Wrong data passed.', JCF_TEXTDOMAIN)) );
 		}
 		
 		$title = strip_tags(trim($_POST['title']));
 		if( empty($title) ){
-			jcf_ajax_reposnse( array('status' => "0", 'error'=>__('Title field is required.')) );
+			jcf_ajax_reposnse( array('status' => "0", 'error'=>__('Title field is required.', JCF_TEXTDOMAIN)) );
 		}
 		
 		$fieldset['title'] = $title;

@@ -36,6 +36,7 @@ div.jcf_edit_field div.checkboxes-set{
 	padding:5px 0 5px;
 	overflow:hidden;
 	width:100%;
+	background:#fff;
 }
 div.jcf_edit_field div.checkboxes-set label{
 	width:20%;
@@ -46,4 +47,7 @@ div.jcf_edit_field div.checkboxes-set label{
 div.jcf_edit_field div.checkboxes-set input{
 	width:auto !important;
 	margin-right:10px;
+}
+div.jcf_edit_field table.mceLayout{
+	background:#fff;
 }

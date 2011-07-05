@@ -35,7 +35,7 @@ class Just_Field_Upload extends Just_Field{
 	function Just_Field_Upload(){
 
 		$field_ops = array( 'classname' => 'field_uploadmedia' );
-		$this->Just_Field( 'uploadmedia', __('Upload Media'), $field_ops);
+		$this->Just_Field( 'uploadmedia', __('Upload Media', JCF_TEXTDOMAIN), $field_ops);
 		
 		add_action('admin_head' , array($this , 'add_MediaUploader_js'));
 	}
@@ -53,7 +53,7 @@ class Just_Field_Upload extends Just_Field{
 		$del_image = WP_PLUGIN_URL.'/just-custom-fields/components/uploadmedia/assets/jcf-delimage.png';
 		$noimage = $image = WP_PLUGIN_URL.'/just-custom-fields/components/uploadmedia/assets/jcf-noimage100x77.jpg';
 		
-		$upload_text = 'Upload';
+		$upload_text = __('Upload', JCF_TEXTDOMAIN);
 		$delete_class = ' jcf-hide';
 		
 		$upload_type = $this->instance['type'];
@@ -72,7 +72,7 @@ class Just_Field_Upload extends Just_Field{
 				if( !empty($entry) ){
 					$value = esc_attr( $entry['image'] );
 					$image = jcf_get_thumb_path( $entry['image'] );
-					$upload_text = 'Update '.$upload_type;
+					$upload_text = ($upload_type == 'image')? __('Update image', JCF_TEXTDOMAIN) : __('Update file', JCF_TEXTDOMAIN);
 					$delete_class = '';
 	
 					$img_title = esc_attr( @$entry['title'] );
@@ -93,13 +93,13 @@ class Just_Field_Upload extends Just_Field{
 								value="<?php echo $value; ?>" />
 						<p class="<?php echo $delete_class; ?>"><a href="<?php echo $value; ?>" target="_blank"><?php echo basename($value); ?></a></p>
 						<?php if($this->instance['alt_title']) : ?>
-							<p>Title: 
+							<p><?php _e('Title:', JCF_TEXTDOMAIN); ?> <br/>
 								<input type="text" value="<?php echo $img_title; ?>" 
 									id="<?php echo $this->get_field_id_l2('alt_title', $key); ?>" 
 									name="<?php echo $this->get_field_name_l2('alt_title', $key); ?>"></p>
 						<?php endif; ?>
 						<?php if($this->instance['alt_descr']) : ?>
-							<p>Description: 
+							<p><?php _e('Description:', JCF_TEXTDOMAIN); ?> <br/>
 								<textarea cols="95" row="3"
 									id="<?php echo $this->get_field_id_l2('alt_descr', $key); ?>" 
 									name="<?php echo $this->get_field_name_l2('alt_descr', $key); ?>"
@@ -107,17 +107,17 @@ class Just_Field_Upload extends Just_Field{
 						<?php endif; ?>
 						<a href="media-upload.php?jcf_media=true&amp;type=<?php echo $upload_type; ?>&amp;TB_iframe=true" class="jcf-btn jcf_upload"
 								rel="<?php echo $this->get_field_id_l2('uploaded_file', $key); ?>"><?php echo $upload_text; ?></a>
-						<a href="#" class="jcf-btn jcf_delete<?php echo $delete_class; ?>">Delete</a>
+						<a href="#" class="jcf-btn jcf_delete<?php echo $delete_class; ?>"><?php _e('Delete', JCF_TEXTDOMAIN); ?></a>
 					</div>
 				</div>
 				<div class="jcf-delete-layer">
 					<img src="<?php echo $del_image; ?>" alt="" />
 					<input type="hidden" id="<?php echo $this->get_field_id_l2('delete', $key); ?>" name="<?php echo $this->get_field_name_l2('delete', $key); ?>" value="" />
-					<a href="#" class="jcf-btn jcf_cancel">Cancel</a><br/>
+					<a href="#" class="jcf-btn jcf_cancel"><?php _e('Cancel', JCF_TEXTDOMAIN); ?></a><br/>
 				</div>
 			</div>
 			<?php endforeach; ?>
-			<a href="#" class="jcf-btn jcf_add_more">+ Add another <?php echo $upload_type; ?></a>
+			<a href="#" class="jcf-btn jcf_add_more"><?php if($upload_type == 'image') _e('+ Add another image', JCF_TEXTDOMAIN); else _e('+ Add another file', JCF_TEXTDOMAIN); ?></a>
 		</div>
 
 		<?php
@@ -164,9 +164,9 @@ class Just_Field_Upload extends Just_Field{
 					// wordpress resize
 					$imagepath = ABSPATH . str_replace( get_bloginfo('home').'/', '', $value );
 					$thumbpath = image_resize($imagepath, $autoresize[0], $autoresize[1]);
-					@chmod($thumbpath, 0777);
 					// get link
 					if( is_string($thumbpath) && $thumbpath != '' ){
+						@chmod($thumbpath, 0777);
 						$value = get_bloginfo('home').'/' . str_replace(ABSPATH, '', $thumbpath);
 						$file['image'] = $value;
 					}
@@ -204,31 +204,31 @@ class Just_Field_Upload extends Just_Field{
 		$instance['type'] = ($instance['type'])? $instance['type'] : 'file';
 		$instance = wp_parse_args( (array) $instance,
 				array( 'title' => '', 'type' => 'file', 'autoresize' => '',
-					  'description' => __('Press "Upload" button, upload file or select in the library. Then choose Link "None" and "Full size" and press "Select '.$instance['type'].'".') ) );
+					  'description' => __('Press "Upload" button, upload file or select in the library. Then choose Link "None" and "Full size" and press "Select File".', JCF_TEXTDOMAIN) ) );
 
 		$title = esc_attr( $instance['title'] );
 		$type = $instance['type'];
 		$autoresize = esc_attr( $instance['autoresize'] );
 		$description = esc_html($instance['description']);
 		?>
-		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:', 'custom-fields'); ?></label> <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" /></p>
+		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:', JCF_TEXTDOMAIN); ?></label> <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" /></p>
 		<p>
-			<label for="<?php echo $this->get_field_id('type'); ?>"><?php _e('Type of files:', 'custom-fields'); ?></label>
+			<label for="<?php echo $this->get_field_id('type'); ?>"><?php _e('Type of files:', JCF_TEXTDOMAIN); ?></label>
 			<select class="widefat" id="<?php echo $this->get_field_id('type'); ?>" name="<?php echo $this->get_field_name('type'); ?>">
-				<option value="file" <?php selected('file', $type);?>><?php _e('All', 'custom-fields'); ?></option>
-				<option value="image" <?php selected('image', $type);?>><?php _e('Only Images', 'custom-fields'); ?></option>
+				<option value="file" <?php selected('file', $type);?>><?php _e('All', JCF_TEXTDOMAIN); ?></option>
+				<option value="image" <?php selected('image', $type);?>><?php _e('Only Images', JCF_TEXTDOMAIN); ?></option>
 			</select>
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id('autoresize'); ?>"><?php _e('Auto resize', 'custom-fields'); ?></label> 
+			<label for="<?php echo $this->get_field_id('autoresize'); ?>"><?php _e('Auto resize', JCF_TEXTDOMAIN); ?></label> 
 			<input id="<?php echo $this->get_field_id('autoresize'); ?>" name="<?php echo $this->get_field_name('autoresize'); ?>" type="text" value="<?php echo $autoresize; ?>" />
-			<br/><small>Set dimensions to autoresize (in px).<br/><i>Example: 200x160</i></small>
+			<br/><small><?php _e('Set dimensions to autoresize (in px).<br/><i>Example: 200x160', JCF_TEXTDOMAIN); ?></i></small>
 		</p>
 
-		<p><label for="<?php echo $this->get_field_id('alt_title'); ?>"><input type="checkbox" id="<?php echo $this->get_field_id('alt_title'); ?>" name="<?php echo $this->get_field_name('alt_title'); ?>" <?php if(!empty($instance['alt_title'])) echo 'checked="checked"'; ?> /> <?php _e('Enable alternative text', 'custom-fields'); ?></label></p>
-		<p><label for="<?php echo $this->get_field_id('alt_descr'); ?>"><input type="checkbox" id="<?php echo $this->get_field_id('alt_descr'); ?>" name="<?php echo $this->get_field_name('alt_descr'); ?>" <?php if(!empty($instance['alt_descr'])) echo 'checked="checked"'; ?> /> <?php _e('Enable alternative description', 'custom-fields'); ?></label></p>
+		<p><label for="<?php echo $this->get_field_id('alt_title'); ?>"><input type="checkbox" id="<?php echo $this->get_field_id('alt_title'); ?>" name="<?php echo $this->get_field_name('alt_title'); ?>" <?php if(!empty($instance['alt_title'])) echo 'checked="checked"'; ?> /> <?php _e('Enable alternative text', JCF_TEXTDOMAIN); ?></label></p>
+		<p><label for="<?php echo $this->get_field_id('alt_descr'); ?>"><input type="checkbox" id="<?php echo $this->get_field_id('alt_descr'); ?>" name="<?php echo $this->get_field_name('alt_descr'); ?>" <?php if(!empty($instance['alt_descr'])) echo 'checked="checked"'; ?> /> <?php _e('Enable alternative description', JCF_TEXTDOMAIN); ?></label></p>
 
-		<p><label for="<?php echo $this->get_field_id('description'); ?>"><?php _e('Description:', 'custom-fields'); ?></label> <textarea name="<?php echo $this->get_field_name('description'); ?>" id="<?php echo $this->get_field_id('description'); ?>" cols="20" rows="4" class="widefat"><?php echo $description; ?></textarea></p>
+		<p><label for="<?php echo $this->get_field_id('description'); ?>"><?php _e('Description:', JCF_TEXTDOMAIN); ?></label> <textarea name="<?php echo $this->get_field_name('description'); ?>" id="<?php echo $this->get_field_id('description'); ?>" cols="20" rows="4" class="widefat"><?php echo $description; ?></textarea></p>
 		<?php
 	}
 
@@ -253,6 +253,9 @@ class Just_Field_Upload extends Just_Field{
 				array('jquery','media-upload','thickbox')
 			);
 		wp_enqueue_script('jcf_uploadmedia');
+
+		// add text domain
+		wp_localize_script( 'jcf_uploadmedia', 'jcf_textdomain', jcf_get_language_strings() );
 	}
 	
 	function add_css(){
@@ -271,9 +274,9 @@ class Just_Field_Upload extends Just_Field{
 		// Gets the right label depending on the caller widget
 		switch ($_GET ['type'])
 		{
-			case 'image': $button_label = __('Select Picture'); break;
-			case 'file': $button_label = __('Select File'); break;
-			default: $button_label = __('Insert into Post'); break;
+			case 'image': $button_label = __('Select Picture', JCF_TEXTDOMAIN); break;
+			case 'file': $button_label = __('Select File', JCF_TEXTDOMAIN); break;
+			default: $button_label = __('Insert into Post', JCF_TEXTDOMAIN); break;
 		}
 		// Overrides the label when displaying the media uploader panels
 		?>

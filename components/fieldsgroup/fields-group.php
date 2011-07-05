@@ -8,7 +8,7 @@ class Just_Field_FieldsGroup extends Just_Field{
 	
 	function Just_Field_FieldsGroup(){
 		$field_ops = array( 'classname' => 'field_fieldsgroup' );
-		$this->Just_Field( 'fieldsgroup', __('Fields Group'), $field_ops);
+		$this->Just_Field( 'fieldsgroup', __('Fields Group', JCF_TEXTDOMAIN), $field_ops);
 	}
 	
 	/**
@@ -40,7 +40,7 @@ class Just_Field_FieldsGroup extends Just_Field{
 		}
 		
 		if( empty($fields) ){
-			echo '<p>Wrong fields configuration. Please check widget settings.</p>';
+			echo '<p>'.__('Wrong fields configuration. Please check widget settings.', JCF_TEXTDOMAIN).'</p>';
 		}
 		
 		if( !empty($fields) ) :
@@ -60,16 +60,16 @@ class Just_Field_FieldsGroup extends Just_Field{
 								name="<?php echo $this->get_field_name_l2($field_name, $key); ?>">
 						</p>
 					<?php endforeach; ?>
-					<a href="#" class="jcf-btn jcf_delete">Delete</a>
+					<a href="#" class="jcf-btn jcf_delete"><?php _e('Delete', JCF_TEXTDOMAIN); ?></a>
 				</div>
 				<div class="jcf-delete-layer">
 					<img src="<?php echo $del_image; ?>" alt="" />
 					<input type="hidden" id="<?php echo $this->get_field_id_l2('__delete__', $key); ?>" name="<?php echo $this->get_field_name_l2('__delete__', $key); ?>" value="" />
-					<a href="#" class="jcf-btn jcf_cancel">Cancel</a><br/>
+					<a href="#" class="jcf-btn jcf_cancel"><?php _e('Cancel', JCF_TEXTDOMAIN); ?></a><br/>
 				</div>
 			</div>
 			<?php endforeach; ?>
-			<a href="#" class="jcf-btn jcf_add_more">+ Add another <?php echo $upload_type; ?></a>
+			<a href="#" class="jcf-btn jcf_add_more"><?php _e('+ Add another', JCF_TEXTDOMAIN); ?></a>
 		</div>
 		<?php
 		endif; 
@@ -131,11 +131,12 @@ class Just_Field_FieldsGroup extends Just_Field{
 		$fields = esc_html( $instance['fields'] );
 		$description = esc_html($instance['description']);
 		?>
-		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:', 'custom-fields'); ?></label> <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" /></p>
-		<p><label for="<?php echo $this->get_field_id('fields'); ?>"><?php _e('Fields:', 'custom-fields'); ?></label> 
+		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:', JCF_TEXTDOMAIN); ?></label>
+			<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" /></p>
+		<p><label for="<?php echo $this->get_field_id('fields'); ?>"><?php _e('Fields:', JCF_TEXTDOMAIN); ?></label> 
 			<textarea name="<?php echo $this->get_field_name('fields'); ?>" id="<?php echo $this->get_field_id('fields'); ?>" cols="20" rows="4" class="widefat"><?php echo $fields; ?></textarea>
-			<br/><small>Format: %fieldname|%fieldtitle<br/><i>Example: price|Product Price</i></small></p>
-		<p><label for="<?php echo $this->get_field_id('description'); ?>"><?php _e('Description:', 'custom-fields'); ?></label> 
+			<br/><small><?php _e('Format: %fieldname|%fieldtitle<br/><i>Example: price|Product Price', JCF_TEXTDOMAIN); ?></i></small></p>
+		<p><label for="<?php echo $this->get_field_id('description'); ?>"><?php _e('Description:', JCF_TEXTDOMAIN); ?></label> 
 			<textarea name="<?php echo $this->get_field_name('description'); ?>" id="<?php echo $this->get_field_id('description'); ?>" cols="20" rows="2" class="widefat"><?php echo $description; ?></textarea></p>
 		<?php
 	}

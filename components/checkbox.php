@@ -9,7 +9,7 @@ class Just_Field_Checkbox extends Just_Field{
 	
 	function Just_Field_Checkbox() {
 		$field_ops = array('classname' => 'field_checkbox' );
-		$this->Just_Field('checkbox', __('Checkbox'), $field_ops);
+		$this->Just_Field('checkbox', __('Checkbox', JCF_TEXTDOMAIN), $field_ops);
 	}
 	
 	/**
@@ -33,7 +33,7 @@ class Just_Field_Checkbox extends Just_Field{
 		}
 		
 		if( empty($values)){
-			echo '<p>Please check settings. Values are empty</p>';
+			echo '<p>'.__('Please check settings. Values are empty', JCF_TEXTDOMAIN).'</p>';
 			return false;
 		}
 
@@ -93,16 +93,16 @@ class Just_Field_Checkbox extends Just_Field{
 		$description = esc_html($instance['description']);
 		?>
 		<p>
-			<label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:'); ?></label>
+			<label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:', JCF_TEXTDOMAIN); ?></label>
 			<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" />
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id('settings'); ?>"><?php _e('Settings:'); ?></label> 
+			<label for="<?php echo $this->get_field_id('settings'); ?>"><?php _e('Settings:', JCF_TEXTDOMAIN); ?></label> 
 			<textarea class="widefat" id="<?php echo $this->get_field_id('settings'); ?>" name="<?php echo $this->get_field_name('settings'); ?>" ><?php echo $settings; ?></textarea>
-			<br/><small><?php _e('Parameters like (you can use just "label" if "id" is the same):<br>label1|id1<br>label2|id2<br>label3'); ?></small>
+			<br/><small><?php _e('Parameters like (you can use just "label" if "id" is the same):<br>label1|id1<br>label2|id2<br>label3', JCF_TEXTDOMAIN); ?></small>
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id('description'); ?>"><?php _e('Description:'); ?></label>
+			<label for="<?php echo $this->get_field_id('description'); ?>"><?php _e('Description:', JCF_TEXTDOMAIN); ?></label>
 			<textarea name="<?php echo $this->get_field_name('description'); ?>" id="<?php echo $this->get_field_id('description'); ?>" cols="20" rows="4" class="widefat"><?php echo $description; ?></textarea>
 		</p>
 		<?php

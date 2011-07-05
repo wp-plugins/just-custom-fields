@@ -41,7 +41,7 @@ function jcf_uploadmedia_send_to_editor( html ){
 		.removeClass('jcf-hide')
 		.show();
 	
-	var update_text = ( jcf_upload_type == 'image' )? 'Update Image' : 'Update File';
+	var update_text = ( jcf_upload_type == 'image' )? jcf_textdomain.update_image : jcf_textdomain.update_file;
 	row.find('a.jcf_upload').text(update_text)
 	row.find('a.jcf_delete').removeClass('jcf-hide').show();
 	

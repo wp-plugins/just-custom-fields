@@ -9,7 +9,7 @@ class Just_Field_Textarea extends Just_Field{
 	
 	function Just_Field_Textarea() {
 		$field_ops = array( 'classname' => 'field_textarea' );
-		$this->Just_Field('textarea', __('Textarea'), $field_ops);
+		$this->Just_Field('textarea', __('Textarea', JCF_TEXTDOMAIN), $field_ops);
 	}
 	
 	/**
@@ -70,9 +70,9 @@ class Just_Field_Textarea extends Just_Field{
 		$description = esc_html($instance['description']);
 		$checked = !empty($instance['editor'])? ' checked="checked" ' : '';
 		?>
-		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:'); ?></label> <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" /></p>
-		<p><label for="<?php echo $this->get_field_id('editor'); ?>"><input class="checkbox" id="<?php echo $this->get_field_id('editor'); ?>" name="<?php echo $this->get_field_name('editor'); ?>" type="checkbox" value="1" <?php echo $checked; ?> /> <?php _e('Use Editor for this textarea:'); ?></label></p>
-		<p><label for="<?php echo $this->get_field_id('description'); ?>"><?php _e('Description:'); ?></label> <textarea name="<?php echo $this->get_field_name('description'); ?>" id="<?php echo $this->get_field_id('description'); ?>" cols="20" rows="4" class="widefat"><?php echo $description; ?></textarea></p>
+		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:', JCF_TEXTDOMAIN); ?></label> <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" /></p>
+		<p><label for="<?php echo $this->get_field_id('editor'); ?>"><input class="checkbox" id="<?php echo $this->get_field_id('editor'); ?>" name="<?php echo $this->get_field_name('editor'); ?>" type="checkbox" value="1" <?php echo $checked; ?> /> <?php _e('Use Editor for this textarea:', JCF_TEXTDOMAIN); ?></label></p>
+		<p><label for="<?php echo $this->get_field_id('description'); ?>"><?php _e('Description:', JCF_TEXTDOMAIN); ?></label> <textarea name="<?php echo $this->get_field_name('description'); ?>" id="<?php echo $this->get_field_id('description'); ?>" cols="20" rows="4" class="widefat"><?php echo $description; ?></textarea></p>
 		<?php
 	}
 	

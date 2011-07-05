@@ -10,6 +10,8 @@ Donate link: http://justcoded.com/just-labs/just-custom-fields-for-wordpress-plu
 */
 
 define('JCF_ROOT', dirname(__FILE__));
+define('JCF_TEXTDOMAIN', 'just-custom-fields');
+
 require_once( JCF_ROOT.'/inc/class.field.php' );
 require_once( JCF_ROOT.'/inc/functions.fieldset.php' );
 require_once( JCF_ROOT.'/inc/functions.fields.php' );
@@ -39,6 +41,12 @@ add_action('plugins_loaded', 'jcf_init');
 function jcf_init(){
 	if( !is_admin() ) return;
 	
+	/**
+	 *	load translations
+	 */
+	load_plugin_textdomain( JCF_TEXTDOMAIN, false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+	
+	// init global variables
 	global $jcf_fields, $jcf_fieldsets;
 	
 	// add admin page
@@ -91,7 +99,7 @@ function jcf_init(){
 
 // hook to add new admin setting page
 function jcf_admin_menu(){
-	add_options_page('Just Custom Fields', 'Just Custom Fields', 5, 'just_custom_fields', 'jcf_admin_settings_page');
+	add_options_page(__('Just Custom Fields', JCF_TEXTDOMAIN), __('Just Custom Fields', JCF_TEXTDOMAIN), 5, 'just_custom_fields', 'jcf_admin_settings_page');
 }
 
 /**
@@ -122,6 +130,23 @@ function jcf_admin_fields_page( $post_type ){
 	
 	// load template
 	include( JCF_ROOT . '/templates/fields_ui.tpl.php' );
+}
+
+/**
+ *	javascript localization
+ */
+function jcf_get_language_strings(){
+	$strings = array(
+		'hi' => __('Hello there', JCF_TEXTDOMAIN),
+		'edit' => __('Edit', JCF_TEXTDOMAIN),
+		'delete' => __('Delete', JCF_TEXTDOMAIN),
+		'confirm_field_delete' => __('Are you sure you want to delete selected field?', JCF_TEXTDOMAIN),
+		'confirm_fieldset_delete' => __("Are you sure you want to delete the fieldset?\nAll fields will be also deleted!", JCF_TEXTDOMAIN),
+		'update_image' => __('Update Image', JCF_TEXTDOMAIN),
+		'update_file' => __('Update File', JCF_TEXTDOMAIN),
+	);
+	$strings = apply_filters('jcf_localize_script_strings', $strings);
+	return $strings;
 }
 
 // print image with loader
@@ -168,6 +193,9 @@ function jcf_admin_add_scripts() {
 			array('jquery', 'json2', 'jquery-form', 'jquery-ui-sortable')
 		);
 	wp_enqueue_script('just_custom_fields');
+	
+	// add text domain
+	wp_localize_script( 'just_custom_fields', 'jcf_textdomain', jcf_get_language_strings() );
 }
 
 // add custom styles for plugin settings page

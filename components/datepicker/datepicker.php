@@ -3,7 +3,7 @@ class Just_Field_DatePicker extends Just_Field{
 	
 	function Just_Field_DatePicker(){
 		$field_ops = array( 'classname' => 'field_datepicker' );
-		$this->Just_Field('datepicker', __('Date Picker'), $field_ops);
+		$this->Just_Field('datepicker', __('Date Picker', JCF_TEXTDOMAIN), $field_ops);
 	}
 	
 	/**
@@ -59,8 +59,8 @@ class Just_Field_DatePicker extends Just_Field{
 		$title = esc_attr( $instance['title'] );
 		$show_monthes = !empty($instance['show_monthes'])? ' checked="checked" ' : '';
 		?>
-		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:'); ?></label> <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" /></p>
-		<p><label for="<?php echo $this->get_field_id('show_monthes'); ?>"><input class="checkbox" id="<?php echo $this->get_field_id('show_monthes'); ?>" name="<?php echo $this->get_field_name('show_monthes'); ?>" type="checkbox" value="1" <?php echo $show_monthes; ?> /> <?php _e('Show month/year select boxes'); ?></label></p>
+		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:', JCF_TEXTDOMAIN); ?></label> <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" /></p>
+		<p><label for="<?php echo $this->get_field_id('show_monthes'); ?>"><input class="checkbox" id="<?php echo $this->get_field_id('show_monthes'); ?>" name="<?php echo $this->get_field_name('show_monthes'); ?>" type="checkbox" value="1" <?php echo $show_monthes; ?> /> <?php _e('Show month/year select boxes', JCF_TEXTDOMAIN); ?></label></p>
 		<?php
 	}
 	
