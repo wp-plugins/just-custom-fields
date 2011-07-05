@@ -4,7 +4,7 @@ Plugin Name: Just Custom Fields for Wordpress
 Plugin URI: http://justcoded.com/just-labs/just-custom-fields-for-wordpress-plugin/
 Description: This plugin add custom fields for standard and custom post types in WordPress.
 Author: Alex Prokopenko
-Version: 0.9b
+Version: 1.0b
 Author URI: http://justcoded.com/
 Donate link: http://justcoded.com/just-labs/just-custom-fields-for-wordpress-plugin/
 */
