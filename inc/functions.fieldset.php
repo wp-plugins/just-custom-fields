@@ -15,11 +15,11 @@
 		return $fieldsets;
 	}
 	
-	function jcf_fieldsets_update( $key, $values ){
+	function jcf_fieldsets_update( $key, $values = array() ){
 		$option_name = jcf_fieldsets_get_option_name();
 		
 		$fieldsets = get_option($option_name, array());
-		if( $value == NULL && isset($fieldsets[$key]) ){
+		if( $values === NULL && isset($fieldsets[$key]) ){
 			unset($fieldsets[$key]);
 		}
 		

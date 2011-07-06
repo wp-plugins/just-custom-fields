@@ -126,6 +126,20 @@ class Just_Field{
 							<input class="widefat" id="<?php echo $this->get_field_id('slug'); ?>" name="<?php echo $this->get_field_name('slug'); ?>" type="text" value="<?php echo $slug; ?>" />
 							<br/><small><?php _e('Machine name, will be used for postmeta field name.', JCF_TEXTDOMAIN); ?></small>
 						</p>
+						<?php
+							// enabled field
+							if( $this->is_new ){
+								$this->instance['enabled'] = 1;
+							}
+						?>
+						<p>
+							<label for="<?php echo $this->get_field_id('enabled'); ?>">
+								<input class="checkbox" type="checkbox" 
+										id="<?php echo $this->get_field_id('enabled'); ?>"
+										name="<?php echo $this->get_field_name('enabled'); ?>"
+										value="1" <?php checked(true, @$this->instance['enabled']); ?> />
+								<?php _e('Enabled', JCF_TEXTDOMAIN); ?></label>
+						</p>
 						
 						<div class="field-control-actions">
 							<div class="alignleft">
@@ -171,6 +185,7 @@ class Just_Field{
 		$instance = $this->update($input, $this->instance);
 		$instance['title'] = strip_tags($instance['title']);
 		$instance['slug'] = strip_tags($input['slug']);
+		$instance['enabled'] = (int)@$input['enabled'];
 		
 		// check for errors
 		// IMPORTANT: experimental function
@@ -182,11 +197,12 @@ class Just_Field{
 		if( $this->is_new ){
 			$this->number = jcf_get_fields_index( $this->id_base );
 			$this->id = $this->id_base . '-' . $this->number;
-			// update fieldset
-			$fieldset = jcf_fieldsets_get( $this->fieldset_id );
-			$fieldset['fields'][$this->id] = $this->id;
-			jcf_fieldsets_update( $this->fieldset_id, $fieldset );
 		}
+		
+		// update fieldset
+		$fieldset = jcf_fieldsets_get( $this->fieldset_id );
+		$fieldset['fields'][$this->id] = $instance['enabled'];
+		jcf_fieldsets_update( $this->fieldset_id, $fieldset );
 		
 		// check slug field
 		if( empty($instance['slug']) ){
@@ -275,7 +291,7 @@ class Just_Field{
 		if( !empty($jcf_included_assets['styles'][get_class($this)]) )
 			return false;
 		
-		if( method_exists($this, 'add_js') ){
+		if( method_exists($this, 'add_css') ){
 			add_action( 'jcf_admin_edit_post_styles', array($this, 'add_css'), 10 );
 		}
 

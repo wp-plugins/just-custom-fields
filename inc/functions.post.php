@@ -13,17 +13,22 @@
 		
 		// remove fieldsets without fields
 		foreach($fieldsets as $f_id => $fieldset){
-			if( empty($fieldset['fields']) ){
-				unset($fieldsets[$f_id]);
-			}
-			// add custom js/css for components
-			foreach($fieldset['fields'] as $field_id => $tmp){
+			// check $enabled; add custom js/css for components
+			foreach($fieldset['fields'] as $field_id => $enabled){
+				if( !$enabled ){
+					unset($fieldset['fields'][$field_id]);
+					continue;
+				}
 				$field_obj = jcf_init_field_object($field_id, $fieldset['id']);
 				$field_obj->do_add_js();
 				$field_obj->do_add_css();
 			}
+			// if all fields disabled -> remove fieldset
+			if( empty($fieldset['fields']) ){
+				unset($fieldsets[$f_id]);
+			}
 		}
-		unset($field_obj);
+		if(!empty($field_obj)) unset($field_obj);
 		
 		if( empty($fieldsets) ) return false;
 
@@ -44,7 +49,9 @@
 	function jcf_post_show_custom_fields( $post = NULL, $box = NULL ){
 		$fieldset = $box['args'][0];
 		
-		foreach($fieldset['fields'] as $field_id => $tmp){
+		foreach($fieldset['fields'] as $field_id => $enabled){
+			if( !$enabled ) continue;
+			
 			$field_obj = jcf_init_field_object($field_id, $fieldset['id']);
 			$field_obj->set_post_ID( $post->ID );
 			//pa($field_obj,1);

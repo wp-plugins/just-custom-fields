@@ -59,6 +59,10 @@ msgstr ""
 msgid "Slug:"
 msgstr ""
 
+#: inc/class.field.php:125
+msgid "Enabled"
+msgstr ""
+
 #: inc/class.field.php:127
 msgid "Machine name, will be used for postmeta field name."
 msgstr ""
@@ -289,4 +293,10 @@ msgid "Save"
 msgstr ""
 
 msgid "Title:"
+msgstr ""
+
+msgid "Yes"
+msgstr ""
+
+msgid "No"
 msgstr ""

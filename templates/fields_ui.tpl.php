@@ -31,18 +31,18 @@
 							<th><?php _e('Field', JCF_TEXTDOMAIN); ?></th>
 							<th><?php _e('Slug', JCF_TEXTDOMAIN); ?></th>
 							<th><?php _e('Type', JCF_TEXTDOMAIN); ?></th>
-							<!-- <th>Enabled?</th> -->
+							<th><?php _e('Enabled', JCF_TEXTDOMAIN); ?></th>
 						</tr></thead>
 						<tfoot><tr>
 							<th class="check-column">&nbsp;</th>
 							<th><?php _e('Field', JCF_TEXTDOMAIN); ?></th>
 							<th><?php _e('Slug', JCF_TEXTDOMAIN); ?></th>
 							<th><?php _e('Type', JCF_TEXTDOMAIN); ?></th>
-							<!-- <th>Enabled?</th> -->
+							<th><?php _e('Enabled', JCF_TEXTDOMAIN); ?></th>
 						</tr></tfoot>
 						<tbody id="the-list-<?php echo $fieldset['id']; ?>">
 							<?php if( !empty($fieldset['fields']) && is_array($fieldset['fields']) ) : ?>
-								<?php foreach($fieldset['fields'] as $field_id => $value) : ?>
+								<?php foreach($fieldset['fields'] as $field_id => $enabled) : ?>
 								<tr id="field_row_<?php echo $field_id; ?>">
 									<td class="check-column"><span class="drag-handle">move</span></td>
 									<td><strong><a href="#" rel="<?php echo $field_id; ?>"><?php echo @$field_settings[$field_id]['title']; ?></a></strong>
@@ -53,7 +53,7 @@
 									</td>
 									<td><?php echo @$field_settings[$field_id]['slug']; ?></td>
 									<td><?php echo preg_replace('/\-[0-9]+$/', '', $field_id); ?></td>
-									<!-- <td>Yes</td> -->
+									<td><?php if($enabled) _e('Yes', JCF_TEXTDOMAIN); else  _e('No', JCF_TEXTDOMAIN);?></td>
 								</tr>
 								<?php endforeach; ?>
 							<?php else : ?>

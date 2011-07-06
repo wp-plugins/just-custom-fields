@@ -66,7 +66,7 @@ class Just_Field_Upload extends Just_Field{
 		// add null element for etalon copy
 		$entries = array( '00' => '' ) + (array)$this->entry;
 		?>
-		<div class="jcf-upload-field jcf-upload-type-<?php echo $upload_type; ?>">
+		<div class="jcf-upload-field jcf-upload-type-<?php echo $upload_type; ?> jcf-field-container">
 			<?php
 			foreach($entries as $key => $entry) : 
 				if( !empty($entry) ){

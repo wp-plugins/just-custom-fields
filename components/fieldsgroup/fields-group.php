@@ -45,7 +45,7 @@ class Just_Field_FieldsGroup extends Just_Field{
 		
 		if( !empty($fields) ) :
 		?>
-		<div class="jcf-fieldsgroup-field">
+		<div class="jcf-fieldsgroup-field jcf-field-container">
 			<?php
 			foreach($entries as $key => $entry) : 
 			?>

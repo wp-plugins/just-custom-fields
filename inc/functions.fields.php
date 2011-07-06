@@ -37,11 +37,11 @@
 	/**
 	 *	set fields in wp-options
 	 */
-	function jcf_field_settings_update( $key, $values ){
+	function jcf_field_settings_update( $key, $values = array() ){
 		$option_name = jcf_fields_get_option_name();
 
 		$field_settings = get_option($option_name, array());
-		if( $value == NULL && isset($field_settings[$key]) ){
+		if( $values === NULL && isset($field_settings[$key]) ){
 			unset($field_settings[$key]);
 		}
 		

@@ -4,7 +4,7 @@ Plugin Name: Just Custom Fields for Wordpress
 Plugin URI: http://justcoded.com/just-labs/just-custom-fields-for-wordpress-plugin/
 Description: This plugin add custom fields for standard and custom post types in WordPress.
 Author: Alex Prokopenko
-Version: 1.0
+Version: 1.1
 Author URI: http://justcoded.com/
 Donate link: http://justcoded.com/just-labs/just-custom-fields-for-wordpress-plugin/
 */
@@ -27,6 +27,7 @@ require_once( JCF_ROOT.'/components/textarea.php' );
 require_once( JCF_ROOT.'/components/datepicker/datepicker.php' );
 require_once( JCF_ROOT.'/components/uploadmedia/uploadmedia.php' );
 require_once( JCF_ROOT.'/components/fieldsgroup/fields-group.php' );
+require_once( JCF_ROOT.'/components/relatedcontent/related-content.php' );
 
 
 if(!function_exists('pa')){
@@ -76,6 +77,7 @@ function jcf_init(){
 	jcf_field_register( 'Just_Field_DatePicker' );
 	jcf_field_register( 'Just_Field_Upload' );
 	jcf_field_register( 'Just_Field_FieldsGroup' );
+	jcf_field_register( 'Just_Field_RelatedContent' );
 	/**
 	 *	to add more fields with your custom plugin:
 	 *	- add_action  'jcf_register_fields'
@@ -144,6 +146,8 @@ function jcf_get_language_strings(){
 		'confirm_fieldset_delete' => __("Are you sure you want to delete the fieldset?\nAll fields will be also deleted!", JCF_TEXTDOMAIN),
 		'update_image' => __('Update Image', JCF_TEXTDOMAIN),
 		'update_file' => __('Update File', JCF_TEXTDOMAIN),
+		'yes' => __('Yes', JCF_TEXTDOMAIN),
+		'no' => __('No', JCF_TEXTDOMAIN),
 	);
 	$strings = apply_filters('jcf_localize_script_strings', $strings);
 	return $strings;

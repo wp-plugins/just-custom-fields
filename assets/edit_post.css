@@ -50,4 +50,33 @@ div.jcf_edit_field div.checkboxes-set input{
 }
 div.jcf_edit_field table.mceLayout{
 	background:#fff;
+	border:1px solid #ccc;
+}
+
+div.jcf_edit_field a.jcf-btn{
+	background:#EEEEEE url("../../../../wp-admin/images/white-grad-active.png") repeat-x scroll left top;
+	line-height:15px;
+	padding:3px 10px;
+	white-space:nowrap;
+	text-shadow:0 1px 0 #FFFFFF;
+	border-color:#BBBBBB;
+	-moz-border-radius:11px 11px 11px 11px;
+	-moz-box-sizing:content-box;
+	border-style:solid;
+	border-width:1px;
+	cursor:pointer;
+	font-size:11px !important;
+	display:block;
+	float:left;
+	margin:0 10px 0 0;
+	text-decoration:none;
+}
+div.jcf_edit_field a:hover{
+	color:#D54E21;
+}
+.postbox div.form-field .jcf-field-container {
+	-moz-border-radius:4px 4px 4px 4px;
+	border:1px solid #DFDFDF;
+	padding:5px 5px 40px;
+	background:#fff;
 }

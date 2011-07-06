@@ -162,6 +162,7 @@ function initFieldsetFields(){
 				html += '</td>';
 				html += '<td>'+response.instance.slug+'</td>';
 				html += '<td>'+response.id_base+'</td>';
+				html += '<td>'+( (response.instance.enabled)? jcf_textdomain.yes : jcf_textdomain.no )+'</td>';
 				fieldset.append(html);
 			}
 			
@@ -169,6 +170,7 @@ function initFieldsetFields(){
 			var row = jQuery('#field_row_' + response.id);
 			row.find('strong a').text(response.instance.title);
 			row.find('td:eq(2)').text(response.instance.slug);
+			row.find('td:eq(4)').text( (response.instance.enabled)? jcf_textdomain.yes : jcf_textdomain.no );
 			
 			// close add box at the end
 			jcf_hide_ajax_container();

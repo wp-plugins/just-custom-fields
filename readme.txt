@@ -5,7 +5,6 @@ Author: Alexander Prokopenko
 Requires at least: 3.0.0
 Tested up to: 3.2
 Donate link: http://justcoded.com/just-labs/just-custom-fields-for-wordpress-plugin/
-Version: 1.0
 Stable tag: trunk
 
 This plugin add custom fields for standard and custom post types in WordPress.
@@ -38,9 +37,12 @@ get_post_custom()
 2. The edit post page meta box with fields created on settings page
 
 == Changelog ==
-* Future versions :
-	* Add component "Related Content" (so you can add relation to another Custom Post Type with simple autocomplete field)
+* Version 1.1 :
 	* Add feature to enable/disable fields without removing them
+	* Add component "Related Content" (so you can add relation to another Custom Post Type with simple autocomplete field)
+	* Bug fix: Randomly changing fieldset order after field update
+	* Bug fix: Component css not loading without js
+	* Improved css :)
 * Version 1.0 :
 	* Added support for multi-language
 	* Added Russian translations
