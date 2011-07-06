@@ -1,8 +1,10 @@
 === Just Custom Fields ===
 Contributors: aprokopenko
-Tags: custom, fields, custom fields, term meta, meta, post meta, object meta, editor
+Plugin Name: Just Custom Fields for Wordpress
+Plugin URI: http://justcoded.com/just-labs/just-custom-fields-for-wordpress-plugin/
 Author: Alexander Prokopenko
 Author URI: http://justcoded.com/
+Tags: custom, fields, custom fields, meta, post meta, object meta, editor
 Requires at least: 3.0.0
 Tested up to: 3.2
 Donate link: http://justcoded.com/just-labs/just-custom-fields-for-wordpress-plugin/
