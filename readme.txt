@@ -1,14 +1,11 @@
 === Just Custom Fields ===
 Contributors: aprokopenko
 Tags: custom, fields, custom fields, term meta, meta, post meta, object meta, editor
-Author URI: http://justcoded.com/
 Author: Alexander Prokopenko
-Plugin URI: http://justcoded.com/just-labs/just-custom-fields-for-wordpress-plugin/
 Requires at least: 3.0.0
 Tested up to: 3.2
 Donate link: http://justcoded.com/just-labs/just-custom-fields-for-wordpress-plugin/
-Version: 1.0
-Stable tag: 1.0
+Stable tag: trunk
 
 This plugin add custom fields for standard and custom post types in WordPress.
 
@@ -31,7 +28,8 @@ get_post_meta()
 get_post_custom()
 
 == Upgrade Notice ==
-This is first plugin version. You need just install it.
+* Remove old plugin folder.
+* Follow install steps 1-2. All settings will be saved.
 
 == Screenshots ==
 
@@ -52,13 +50,13 @@ This is first plugin version. You need just install it.
 	* First version beta
 	
 == Frequently Asked Questions ==
-Q: Where I can edit new fields for Posts or Pages?
+= Q: Where I can edit new fields for Posts or Pages? =
 A: After installing and activating plugin you will see new menu option Settings > Just Custom Fields
 
-Q: My site works slow, is it something wrong with your plugin?
+= Q: My site works slow, is it something wrong with your plugin? =
 A: Plugin is loaded only in Backend and create all objects only on Post edit pages and on the Settings page. So it can't affect the site.
 
-Q: How can i add my own component (new field type)?
+= Q: How can i add my own component (new field type)? =
 A: first of all you need to create class for this field. You class should be extended from Just_Field main class!
 You can copy class /[plugins-folder]/just-custom-fields/components/input-text.php to your plugin or theme and correct it:
 - change name
