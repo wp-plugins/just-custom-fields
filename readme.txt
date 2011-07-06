@@ -2,6 +2,7 @@
 Contributors: aprokopenko
 Tags: custom, fields, custom fields, term meta, meta, post meta, object meta, editor
 Author: Alexander Prokopenko
+Author URI: http://justcoded.com/
 Requires at least: 3.0.0
 Tested up to: 3.2
 Donate link: http://justcoded.com/just-labs/just-custom-fields-for-wordpress-plugin/
