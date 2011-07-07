@@ -16,6 +16,8 @@ This plugin add custom fields for standard and custom post types in WordPress.
 
 This plugin add custom fields for standard and custom post types in WordPress. After installation you will see simple settings page which is self-explanatory to use.
 
+FILL FREE TO CONTACT ME IF YOU FIND ANY BUGS/ISSUES!
+
 == Installation ==
 
 1. Download, unzip and upload to your WordPress plugins directory
