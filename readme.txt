@@ -6,7 +6,7 @@ Author: Alexander Prokopenko
 Author URI: http://justcoded.com/
 Tags: custom, fields, custom fields, meta, post meta, object meta, editor
 Requires at least: 3.0.0
-Tested up to: 3.2
+Tested up to: 3.2.1
 Donate link: http://justcoded.com/just-labs/just-custom-fields-for-wordpress-plugin/
 Stable tag: trunk
 
@@ -42,6 +42,8 @@ get_post_custom()
 2. The edit post page meta box with fields created on settings page
 
 == Changelog ==
+* Version 1.1.1:
+	* Bug fix: Uploadmedia don't work if there are no main Content Editor field (for Custom Post Types)
 * Version 1.1 :
 	* Add feature to enable/disable fields without removing them
 	* Add component "Related Content" (so you can add relation to another Custom Post Type with simple autocomplete field)

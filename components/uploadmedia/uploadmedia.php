@@ -259,7 +259,9 @@ class Just_Field_Upload extends Just_Field{
 	}
 	
 	function add_css(){
-		wp_register_style('jcf_uploadmedia', WP_PLUGIN_URL.'/just-custom-fields/components/uploadmedia/assets/uploadmedia.css');
+		wp_register_style('jcf_uploadmedia',
+				WP_PLUGIN_URL.'/just-custom-fields/components/uploadmedia/assets/uploadmedia.css',
+				array('thickbox'));
 		wp_enqueue_style('jcf_uploadmedia');
 	}
 	
