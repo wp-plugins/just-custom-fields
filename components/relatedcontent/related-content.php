@@ -234,6 +234,7 @@ class Just_Field_RelatedContent extends Just_Field{
 			$response[] = array(
 				'id' => $p->ID,
 				'label' => $p->post_title . $draft . $type_label,
+				'value' => $p->post_title . $draft . $type_label,
 				'type' => $p->post_type,
 				'status' => $p->post_status
 			);

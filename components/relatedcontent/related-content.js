@@ -66,6 +66,16 @@ jQuery(document).ready(function() {
 				},
 			open: function( event, ui ){
 					input_id.parent().find('span.loading').remove();
+					
+					// mark in dropdown list query
+					var term = jQuery(input).val();
+					var term_re = term.replace(/\s/g, '\\s').replace(/\(/g, '\\(').replace(/\)/g, '\\)').replace(/\./g, '\\.').replace(/\*/g, '\\*');
+					var re = new RegExp('('+term_re+')', 'gi');
+					jQuery('ul.ui-autocomplete:visible a').each(function(i, a){
+						var text = jQuery(a).text();
+						var marked = text.replace(re, '<b>$1</b>');
+						jQuery(a).html(marked);
+					})
 				}
 		});
 		
