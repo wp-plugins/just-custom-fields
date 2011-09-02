@@ -247,14 +247,16 @@ class Just_Field{
 		if( empty($this->post_ID) || empty($this->number) ) return false;
 		
 		// check that we have data in POST
-		if( empty($_POST['field-'.$this->id_base][$this->number]) ||
-		    !is_array($_POST['field-'.$this->id_base][$this->number])
+		if( $this->id_base != 'checkbox' && (
+				empty($_POST['field-'.$this->id_base][$this->number]) ||
+				!is_array($_POST['field-'.$this->id_base][$this->number])
+			)
 		   )
 		{
 			return false;
 		}
 		
-		$input = $_POST['field-'.$this->id_base][$this->number];
+		$input = @$_POST['field-'.$this->id_base][$this->number];
 		// get real values
 		$values = $this->save( $input );
 		// save to post meta

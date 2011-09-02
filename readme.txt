@@ -42,6 +42,8 @@ get_post_custom()
 2. The edit post page meta box with fields created on settings page
 
 == Changelog ==
+* Version 1.1.2:
+	* Bug fix: Single checkbox uncheck problem
 * Version 1.1.1:
 	* Bug fix: Uploadmedia don't work if there are no main Content Editor field (for Custom Post Types)
 * Version 1.1 :
