@@ -16,6 +16,19 @@ This plugin add custom fields for standard and custom post types in WordPress.
 
 This plugin add custom fields for standard and custom post types in WordPress. After installation you will see simple settings page which is self-explanatory to use.
 
+For now plugin support such field types:
+* Input text
+* Select Box
+* Multiple Select Box
+* Checkbox (single and multiple)
+* Textarea (you can use editor light for it)
+* Date Picker ^1
+* Upload Media (for upload files and images)
+* Fields Group (for some table data)
+* Related Content (to set relation to another Post/Page or Custom Post Type) ^1
+
+^1 NOTE: Available *only* for WordPress 3.1+ (Related Content field works in Select mode). WordPress 3.0.* has old  jQuery/jQuery UI versions and they are not compatible with DatePicker and Autocomplete fields.
+
 FILL FREE TO CONTACT ME IF YOU FIND ANY BUGS/ISSUES!
 
 == Installation ==
