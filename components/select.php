@@ -38,6 +38,7 @@ class Just_Field_Select extends Just_Field{
 		echo $before_title . $this->instance['title'] . $after_title;
 		echo '<div class="select-field">';
 		echo '<select name="'.$this->get_field_name('val').'" id="'.$this->get_field_id('val').'" style="width: 47%;">';
+			echo '<option value="">'.__('Select One', JCF_TEXTDOMAIN).'</option>';
 			foreach( (array) $values as $key => $val ) {
 				echo '<option value="'.esc_attr($val).'" '.selected($val, $this->entry, false).'>'.esc_html(ucfirst($key)).'</option>' . "\n";
 			}

@@ -6,7 +6,7 @@ Author: Alexander Prokopenko
 Author URI: http://justcoded.com/
 Tags: custom, fields, custom fields, meta, post meta, object meta, editor
 Requires at least: 3.0.0
-Tested up to: 3.2.1
+Tested up to: 3.3
 Donate link: http://justcoded.com/just-labs/just-custom-fields-for-wordpress-plugin/
 Stable tag: trunk
 
@@ -29,6 +29,9 @@ For now plugin support such field types:
 * Related Content (to set relation to another Post/Page or Custom Post Type)\*
 
 _\*NOTE: Available **only** for WordPress 3.1+ (Related Content field works in Select mode). WordPress 3.0.\* has old  jQuery/jQuery UI versions and they are not compatible with DatePicker and Autocomplete fields._
+
+**IMPORTANT** In version 1.3 added new functions to use in theme templates to print Upload Media fields content. Read more about it on plugins home page:
+http://justcoded.com/just-labs/just-custom-fields-for-wordpress-plugin/
 
 FILL FREE TO CONTACT ME IF YOU FIND ANY BUGS/ISSUES!
 
@@ -56,6 +59,17 @@ get_post_custom()
 2. The edit post page meta box with fields created on settings page
 
 == Changelog ==
+* Next release plans
+	* PHP-Code generators to use in templates when editing custom fields
+	* Shortcodes for WP editor
+* Version 1.3
+	* New: Added 2 template functions to print images from Upload Media field
+	* New: Select box have "Select One" option (for empty values)
+	* Updated .pot files (for guys who want to create their own translations)
+	* Updated Russian translations
+	* New: Added Belarusian translations (Thanks to Alexander Ovsov (http://webhostinggeeks.com/science/)
+	* Bug fix: Textarea field compatibility with Wordpress 3.3 (thanks Jam for bug reported)
+	* Bug fix: Sometimes fieldsets works buggly with Cyrillic-only names
 * Version 1.2.1:
 	* Bug fix: Border radius for forms for Chrome and Safari
 * Version 1.2:

@@ -2,17 +2,17 @@
 # This file is distributed under the same license as the Just Custom Fields for Wordpress package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Just Custom Fields for Wordpress 0.9b\n"
+"Project-Id-Version: Just Custom Fields for Wordpress 1.2.1\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/just-custom-fields\n"
-"POT-Creation-Date: 2011-07-04 14:01:18+00:00\n"
+"POT-Creation-Date: 2011-12-22 15:13:50+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "PO-Revision-Date: 2010-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 
-#: inc/functions.ajax.php:7 inc/functions.ajax.php:85 inc/class.field.php:167
+#: inc/functions.ajax.php:7 inc/functions.ajax.php:85 inc/class.field.php:181
 msgid "Title field is required."
 msgstr ""
 
@@ -26,32 +26,42 @@ msgstr ""
 
 #: inc/functions.ajax.php:53 components/input-text.php:60
 #: components/checkbox.php:96 components/textarea.php:73
-#: components/select-multiple.php:85 components/datepicker/datepicker.php:62
+#: components/select-multiple.php:85
+#: components/relatedcontent/related-content.php:180
+#: components/datepicker/datepicker.php:62
 #: components/fieldsgroup/fields-group.php:134
 #: components/uploadmedia/uploadmedia.php:96
 #: components/uploadmedia/uploadmedia.php:214 components/select.php:81
+#: templates/fields_ui.tpl.php:95
 msgid "Title:"
 msgstr ""
 
-#: inc/functions.ajax.php:57 inc/class.field.php:133
-#: just-custom-fields.php:136 components/fieldsgroup/fields-group.php:63
-#: components/uploadmedia/uploadmedia.php:110
+#: inc/functions.ajax.php:57 inc/class.field.php:147
+#: just-custom-fields.php:145 components/relatedcontent/related-content.php:88
+#: components/fieldsgroup/fields-group.php:63
+#: components/uploadmedia/uploadmedia.php:110 templates/fields_ui.tpl.php:51
 msgid "Delete"
 msgstr ""
 
-#: inc/functions.ajax.php:58 inc/class.field.php:135
+#: inc/functions.ajax.php:58 inc/class.field.php:149
 msgid "Close"
+msgstr ""
+
+#: inc/functions.ajax.php:62 inc/class.field.php:153
+msgid "Save"
 msgstr ""
 
 #: inc/functions.ajax.php:80
 msgid "Wrong data passed."
 msgstr ""
 
-#: inc/class.field.php:106 inc/class.field.php:132
+#: inc/class.field.php:106 inc/class.field.php:146
+#: templates/fields_ui.tpl.php:76 templates/fields_ui.tpl.php:97
 msgid "Add"
 msgstr ""
 
-#: inc/class.field.php:106 just-custom-fields.php:135
+#: inc/class.field.php:106 just-custom-fields.php:144
+#: templates/fields_ui.tpl.php:50
 msgid "Edit"
 msgstr ""
 
@@ -59,42 +69,52 @@ msgstr ""
 msgid "Slug:"
 msgstr ""
 
-#: inc/class.field.php:125
-msgid "Enabled"
-msgstr ""
-
 #: inc/class.field.php:127
 msgid "Machine name, will be used for postmeta field name."
 msgstr ""
 
-#: inc/class.field.php:327
+#: inc/class.field.php:141 templates/fields_ui.tpl.php:34
+#: templates/fields_ui.tpl.php:41
+msgid "Enabled"
+msgstr ""
+
+#: inc/class.field.php:345
 msgid "There are no options for this field."
 msgstr ""
 
-#: just-custom-fields.php:96
+#: just-custom-fields.php:105 templates/fields_ui.tpl.php:3
+#: templates/settings_page.tpl.php:3
 msgid "Just Custom Fields"
 msgstr ""
 
-#: just-custom-fields.php:134
+#: just-custom-fields.php:143
 msgid "Hello there"
 msgstr ""
 
-#: just-custom-fields.php:137
+#: just-custom-fields.php:146
 msgid "Are you sure you want to delete selected field?"
 msgstr ""
 
-#: just-custom-fields.php:138
+#: just-custom-fields.php:147
 msgid ""
 "Are you sure you want to delete the fieldset?\n"
 "All fields will be also deleted!"
 msgstr ""
 
-#: just-custom-fields.php:139
+#: just-custom-fields.php:148
 msgid "Update Image"
 msgstr ""
 
-#: just-custom-fields.php:140
+#: just-custom-fields.php:149
 msgid "Update File"
+msgstr ""
+
+#: just-custom-fields.php:150 templates/fields_ui.tpl.php:56
+msgid "Yes"
+msgstr ""
+
+#: just-custom-fields.php:151 templates/fields_ui.tpl.php:56
+msgid "No"
 msgstr ""
 
 #: components/input-text.php:12
@@ -103,6 +123,7 @@ msgstr ""
 
 #: components/input-text.php:61 components/checkbox.php:105
 #: components/textarea.php:75 components/select-multiple.php:90
+#: components/relatedcontent/related-content.php:199
 #: components/fieldsgroup/fields-group.php:139
 #: components/uploadmedia/uploadmedia.php:102
 #: components/uploadmedia/uploadmedia.php:231 components/select.php:85
@@ -141,6 +162,50 @@ msgstr ""
 msgid "Select Multiple"
 msgstr ""
 
+#: components/select.php:41
+msgid "Select One"
+msgstr ""
+
+#: components/relatedcontent/related-content.php:11
+msgid "Related Content"
+msgstr ""
+
+#: components/relatedcontent/related-content.php:111
+#: components/fieldsgroup/fields-group.php:68
+#: components/uploadmedia/uploadmedia.php:116
+msgid "Cancel"
+msgstr ""
+
+#: components/relatedcontent/related-content.php:115
+#: components/fieldsgroup/fields-group.php:72
+msgid "+ Add another"
+msgstr ""
+
+#: components/relatedcontent/related-content.php:172
+msgid "Start typing entry Title to see the list."
+msgstr ""
+
+#: components/relatedcontent/related-content.php:183
+msgid "Post type:"
+msgstr ""
+
+#: components/relatedcontent/related-content.php:185
+#: components/uploadmedia/uploadmedia.php:218
+msgid "All"
+msgstr ""
+
+#: components/relatedcontent/related-content.php:192
+msgid "Input type:"
+msgstr ""
+
+#: components/relatedcontent/related-content.php:194
+msgid "Autocomplete"
+msgstr ""
+
+#: components/relatedcontent/related-content.php:195
+msgid "Dropdown list"
+msgstr ""
+
 #: components/datepicker/datepicker.php:6
 msgid "Date Picker"
 msgstr ""
@@ -155,15 +220,6 @@ msgstr ""
 
 #: components/fieldsgroup/fields-group.php:43
 msgid "Wrong fields configuration. Please check widget settings."
-msgstr ""
-
-#: components/fieldsgroup/fields-group.php:68
-#: components/uploadmedia/uploadmedia.php:116
-msgid "Cancel"
-msgstr ""
-
-#: components/fieldsgroup/fields-group.php:72
-msgid "+ Add another"
 msgstr ""
 
 #: components/fieldsgroup/fields-group.php:136
@@ -208,10 +264,6 @@ msgstr ""
 msgid "Type of files:"
 msgstr ""
 
-#: components/uploadmedia/uploadmedia.php:218
-msgid "All"
-msgstr ""
-
 #: components/uploadmedia/uploadmedia.php:219
 msgid "Only Images"
 msgstr ""
@@ -232,15 +284,15 @@ msgstr ""
 msgid "Enable alternative description"
 msgstr ""
 
-#: components/uploadmedia/uploadmedia.php:274
+#: components/uploadmedia/uploadmedia.php:279
 msgid "Select Picture"
 msgstr ""
 
-#: components/uploadmedia/uploadmedia.php:275
+#: components/uploadmedia/uploadmedia.php:280
 msgid "Select File"
 msgstr ""
 
-#: components/uploadmedia/uploadmedia.php:276
+#: components/uploadmedia/uploadmedia.php:281
 msgid "Insert into Post"
 msgstr ""
 
@@ -248,8 +300,56 @@ msgstr ""
 msgid "Select"
 msgstr ""
 
+#: templates/fields_ui.tpl.php:4
+msgid "Custom Post Type:"
+msgstr ""
+
+#: templates/fields_ui.tpl.php:5 templates/fields_ui.tpl.php:22
+msgid "change"
+msgstr ""
+
+#: templates/fields_ui.tpl.php:20
+msgid "Fieldset:"
+msgstr ""
+
+#: templates/fields_ui.tpl.php:23
+msgid "delete"
+msgstr ""
+
+#: templates/fields_ui.tpl.php:31 templates/fields_ui.tpl.php:38
+msgid "Field"
+msgstr ""
+
+#: templates/fields_ui.tpl.php:32 templates/fields_ui.tpl.php:39
+msgid "Slug"
+msgstr ""
+
+#: templates/fields_ui.tpl.php:33 templates/fields_ui.tpl.php:40
+msgid "Type"
+msgstr ""
+
 #: templates/fields_ui.tpl.php:60
 msgid "Please create fields for this fieldset"
+msgstr ""
+
+#: templates/fields_ui.tpl.php:70
+msgid "Add new Field:"
+msgstr ""
+
+#: templates/fields_ui.tpl.php:91
+msgid "Add Fieldset"
+msgstr ""
+
+#: templates/settings_page.tpl.php:4
+msgid "You should choose Custom Post Type first to configure fields:"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "Just Custom Fields for Wordpress"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://justcoded.com/just-labs/just-custom-fields-for-wordpress-plugin/"
 msgstr ""
 
 #. Description of the plugin/theme
@@ -258,45 +358,14 @@ msgid ""
 "WordPress."
 msgstr ""
 
-#. templates
-msgid "You should choose Custom Post Type first to configure fields:"
+#. Author of the plugin/theme
+msgid "Alexander Prokopenko"
 msgstr ""
 
-msgid "Custom Post Type:"
+#. Author URI of the plugin/theme
+msgid "http://justcoded.com/"
 msgstr ""
 
-msgid "change"
-msgstr ""
-
-msgid "delete"
-msgstr ""
-
-msgid "Fieldset:"
-msgstr ""
-
-msgid "Field"
-msgstr ""
-
-msgid "Slug"
-msgstr ""
-
-msgid "Type"
-msgstr ""
-
-msgid "Add new Field:"
-msgstr ""
-
-msgid "Add Fieldset"
-msgstr ""
-
-msgid "Save"
-msgstr ""
-
-msgid "Title:"
-msgstr ""
-
-msgid "Yes"
-msgstr ""
-
-msgid "No"
+#. Tags of the plugin/theme
+msgid "custom, fields, custom fields, meta, post meta, object meta, editor"
 msgstr ""

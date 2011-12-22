@@ -22,18 +22,37 @@ class Just_Field_Textarea extends Just_Field{
 		echo $before_widget;
 		echo $before_title . $this->instance['title'] . $after_title;
 		
-		$class = '';
-		$entry = esc_html($this->entry);
-		
 		// check editor
 		if( !empty($this->instance['editor']) ){
-			add_action( 'admin_print_footer_scripts', array(&$this, 'customTinyMCE'), 9999 );
-			$class = ' class="mceEditor" ';
-			$entry = wpautop($this->entry);
-			$entry = esc_html($entry);
+			// WP 3.3+ >> we have new cool function to make wysiwyg field
+			if( function_exists('wp_editor') ){
+				wp_editor($this->entry, $this->get_field_id('val'), array(
+					'textarea_name' => $this->get_field_name('val'),
+					'textarea_rows' => 5,
+					'media_buttons' => false,
+					'tinymce' => array(
+						'theme_advanced_buttons1' => 'bold,italic,strikethrough,|,bullist,numlist,blockquote,|,justifyleft,justifycenter,justifyright,|,link,unlink,|,spellchecker,fullscreen,wp_adv',
+					),
+				));
+			}
+			// old version >> hook js, print textarea
+			else{
+				add_action( 'admin_print_footer_scripts', array(&$this, 'customTinyMCE'), 9999 );
+				$entry = wpautop($this->entry);
+				$entry = esc_html($entry);
+				?>
+				<textarea class="mceEditor" name="<?php echo $this->get_field_name('val'); ?>" id="<?php echo $this->get_field_id('val'); ?>" rows="5" cols="50"><?php echo $entry?></textarea>
+				<?php
+			}
 		}
+		// no editor - print textarea
+		else{
+			$entry = esc_html($this->entry);
+			?>
+			<textarea name="<?php echo $this->get_field_name('val'); ?>" id="<?php echo $this->get_field_id('val'); ?>" rows="5" cols="50"><?php echo $entry?></textarea>
+			<?php
+		} // end if($editor)
 		?>
-		<textarea <?php echo $class; ?> name="<?php echo $this->get_field_name('val'); ?>" id="<?php echo $this->get_field_id('val'); ?>" rows="5" cols="50"><?php echo $entry?></textarea>
 		<?php if( !empty($this->instance['description']) )?>
 			<p class="description"><?php echo $this->instance['description']; ?></p>
 		<?php

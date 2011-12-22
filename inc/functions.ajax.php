@@ -6,8 +6,16 @@
 		if( empty($title) ){
 			jcf_ajax_reposnse( array('status' => "0", 'error'=>__('Title field is required.', JCF_TEXTDOMAIN)) );
 		}
-
-		$slug = sanitize_title( $title );
+		
+		$slug = preg_replace('/[^a-z0-9\-\_\s]/i', '', $title);
+		$trimed_slug = trim($slug);
+		if( $trimed_slug == '' ){
+			$slug = 'jcf-fieldset-'.rand(0,10000);
+		}
+		else{
+			$slug = sanitize_title( $title );
+		}
+		//pa($slug,1);
 		$fieldsets = jcf_fieldsets_get();
 		
 		// check exists

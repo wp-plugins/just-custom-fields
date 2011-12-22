@@ -106,5 +106,25 @@
 		$post_type = jcf_get_post_type();
 		return 'jcf_fields-'.$post_type;
 	}
+	
+	/**
+	 *	parse "Settings" param for checkboxes/selects/multiple selects
+	 */
+	function jcf_parse_field_settings( $string ){
+		$values = array();
+		$v = explode("\n", $string);
+		foreach($v as $val){
+			$val = trim($val);
+			if(strpos($val, '|') !== FALSE ){
+				$a = explode('|', $val);
+				$values[$a[0]] = $a[1];
+			}
+			elseif(!empty($val)){
+				$values[$val] = $val;
+			}
+		}
+		$values = array_flip($values);
+		return $values;
+	}
 
 ?>

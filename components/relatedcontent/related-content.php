@@ -169,7 +169,7 @@ class Just_Field_RelatedContent extends Just_Field{
 	function form( $instance ) {
 		//Defaults
 		$instance = wp_parse_args( (array) $instance, array( 'title' => '', 'post_type' => 'page', 'input_type' => 'autocomplete',
-				'description' => __('Start typing entry Title to see the list.') ) );
+				'description' => __('Start typing entry Title to see the list.', JCF_TEXTDOMAIN) ) );
 
 		$title = esc_attr( $instance['title'] );
 		$description = esc_html($instance['description']);
