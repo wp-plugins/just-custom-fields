@@ -11,7 +11,7 @@
 		<br/>
 		<hr/>
 		<br/>
-		<h3>Import field settings</h3>
+		<h3><?php _e('Import field settings', JCF_TEXTDOMAIN); ?></h3>
 		<form action="options-general.php?page=just_custom_fields" method="post" enctype="multipart/form-data">
 			<fieldset>
 				<?php global $just_import_error, $just_import_message;
@@ -25,20 +25,20 @@
 					?></p></div>
 				<?php endif; ?>
 				<p>
-					<label>Import custom fields settings:</label><br/>
+					<label><?php _e('Import custom fields settings:', JCF_TEXTDOMAIN); ?></label><br/>
 					<input type="file" name="import_file" value="" size="40" />
 				</p>
 				<p>
-					<label>Custom Post Type to import to:</label><br/>
+					<label><?php _e('Custom Post Type to import to:', JCF_TEXTDOMAIN); ?></label><br/>
 					<select name="import_pt">
 						<option value=""></option>
 						<?php foreach($post_types as $key => $obj) : ?>
 						<option value="<?php echo $key; ?>"><?php echo $obj->label; ?></option>
 						<?php endforeach; ?>
 					</select>
-					<br/><small>* leave blank to import settings "as is" from the file.</small>
+					<br/><small><?php _e('* leave blank to import settings "as is" from the file.', JCF_TEXTDOMAIN); ?></small>
 				</p>
-				<p><input type="submit" class="button-primary" name="import_submitted" value="Run Import" /></p>
+				<p><input type="submit" class="button-primary" name="import_submitted" value="<?php _e('Run Import', JCF_TEXTDOMAIN); ?>" /></p>
 			</fieldset>
 		</form>
 	</div>

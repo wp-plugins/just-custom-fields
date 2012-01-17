@@ -146,9 +146,6 @@ function jcf_admin_fields_page( $post_type ){
  *	Import process script
  */
 function jcf_admin_fields_import(){
-	if( !class_exists('just_xml') ){
-		require_once( JCF_ROOT . '/inc/class.xml.php' );
-	}
 	
 	if( !empty($_FILES['import_file']) && !empty($_FILES['import_file']['error']) ){
 		global $just_import_error;
@@ -156,121 +153,11 @@ function jcf_admin_fields_import(){
 		return;
 	}
 	
-	global $just_import_message;
-
 	$xml_data = file_get_contents( $_FILES['import_file']['tmp_name'] );
 	@unlink($_FILES['import_file']['tml_name']);
 
-	$xml_parser = new just_xml();
-	$xml = $xml_parser->xml2arr($xml_data);
-	
-	if( empty($xml['custom_post_type'][0]['#']['fieldsets'][0]['#']['fieldset']) ){
-		$just_import_message = 'empty';
-		return;
-	}
-	
-	$xml_fieldsets = $xml['custom_post_type'][0]['#']['fieldsets'][0]['#']['fieldset'];
-	$xml_field_settings = $xml['custom_post_type'][0]['#']['field_settings'][0]['#']['field_setting'];
-	
-	$post_type = $xml['custom_post_type'][0]['#']['name'][0]['#'];
-	if( !empty($_POST['import_pt']) ){
-		$post_type = $_POST['import_pt'];
-	}
-	
-	jcf_set_post_type($post_type);
-	
-	$import_fieldsets = array();
-	$import_field_settings = array();
-	
-	foreach($xml_fieldsets as $_fieldset){
-		$_fieldset = $_fieldset['#'];
-		$fieldset = array(
-			'id' => $_fieldset['id'][0]['#'],
-			'title' => $_fieldset['title'][0]['#'],
-			'fields' => array(),
-		);
-		foreach($_fieldset['fields'][0]['#']['field'] as $_field){
-			$fieldset['fields'][ $_field['@']['id'] ] = $_field['@']['enabled'];
-		}
-		
-		$import_fieldsets[ $fieldset['id'] ] = $fieldset;
-	}
-	
-	foreach($xml_field_settings as $_field_setting){
-		$_field_setting = $_field_setting['#'];
-		$field_setting = array();
-		foreach($_field_setting as $var => $xml_value){
-			$field_setting[$var] = $xml_value[0]['#'];
-		}
-		
-		$import_field_settings[ $field_setting['id'] ] = $field_setting;
-	}
-	
-	$db_fieldsets = jcf_fieldsets_get();
-	$db_field_settings = jcf_field_settings_get();
-	
-	//pa( array($import_fieldsets, $import_field_settings) );
-	//pa( array($db_fieldsets, $db_field_settings), 1 );
-
-	// remove fields with same slug
-	foreach($import_field_settings as $field){
-		foreach($db_fieldsets as $db_fs_id => $db_fs){
-			foreach($db_fs['fields'] as $f_id => $f_enabled){
-				$f_params = $db_field_settings[$f_id];
-				if( strcmp($f_params['slug'], $field['slug']) == 0 ){
-					$field_obj = jcf_init_field_object($f_id, $db_fs_id);
-					$field_obj->do_delete();
-				}
-			}
-		}
-	}
-
-	$db_fieldsets = jcf_fieldsets_get();
-	$db_field_settings = jcf_field_settings_get();
-	
-	//pa( array($db_fieldsets, $db_field_settings), 1 );
-
-	// insert new fieldset / fields
-	foreach($import_fieldsets as $fieldset){
-		// create new fieldset if not exist
-		if( !isset($db_fieldsets[ $fieldset['id'] ]) ){
-			$db_fieldset = array(
-				'id' => $fieldset['id'],
-				'title' => $fieldset['title'],
-				'fields' => array(),
-			);
-		}
-		// if exist - take instance
-		else{
-			$db_fieldset = $db_fieldsets[ $fieldset['id'] ];
-		}
-		
-		// go through fields
-		// to import field we need: 1) create new instance with new number; 2) link with fieldset
-		foreach($fieldset['fields'] as $f_id => $enabled){
-			$import_field = $import_field_settings[$f_id];
-			list( $id_base, $number ) = explode('-', $f_id, 2);
-			// generate new number
-			$number = jcf_get_fields_index($id_base);
-			$db_f_id = $id_base.'-'.$number;
-			
-			$db_field = $import_field;
-			$db_field['id'] = $db_f_id;
-			
-			// insert new field
-			jcf_field_settings_update($db_f_id, $db_field);
-			
-			// add to fieldset
-			$db_fieldset['fields'][$db_f_id] = $enabled;
-		
-		} // end foreach($fieldset['fields'])
-
-		// update fieldset
-		jcf_fieldsets_update($fieldset['id'], $db_fieldset);
-	
-	} // end foreach($import_fieldsets)
-	
-	$just_import_message = 'done';
+	global $just_import_message;
+	$just_import_message = jcf_fields_import( $xml_data );
 }
 
 /**
