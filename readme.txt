@@ -60,8 +60,17 @@ get_post_custom()
 
 == Changelog ==
 * Next release plans
+	* fix thumbs on http auth restricted sites
+	* Select box "blank" value extended options
+	* export/import plugin settings
 	* PHP-Code generators to use in templates when editing custom fields
 	* Shortcodes for WP editor
+	* extend support for new capability types (now it's only "post")
+	* datepicker date formats
+	* make fieldsets related to categories (show/hide based on category select)
+	* restrict Custom field to Page/Post ID
+* Version 1.3.1
+	* Fixed notices about deprecated param for add_options_page().
 * Version 1.3
 	* New: Added 2 template functions to print images from Upload Media field
 	* New: Select box have "Select One" option (for empty values)
