@@ -6,7 +6,7 @@ Author: Alexander Prokopenko
 Author URI: http://justcoded.com/
 Tags: custom, fields, custom fields, meta, post meta, object meta, editor
 Requires at least: 3.0.0
-Tested up to: 3.4
+Tested up to: 4.0
 Donate link: http://justcoded.com/just-labs/just-custom-fields-for-wordpress-plugin/#donate
 Stable tag: trunk
 
@@ -32,6 +32,8 @@ _\*NOTE: Available **only** for WordPress 3.1+ (Related Content field works in S
 
 **IMPORTANT** In version 1.3 added new functions to use in theme templates to print Upload Media fields content. Read more about it on plugins home page:
 http://justcoded.com/just-labs/just-custom-fields-for-wordpress-plugin/
+
+**IMPORTANT** Starting from version 1.4 all fields machine names (slug) will be started from underscore ('_'). This prevent appearing them in standard WordPress Custom fields meta box.
 
 FILL FREE TO CONTACT ME IF YOU FIND ANY BUGS/ISSUES!
 
@@ -73,6 +75,13 @@ get_post_custom()
 	* datepicker date formats
 	* make fieldsets related to categories (show/hide based on category select)
 	* restrict Custom field to Page/Post ID
+* Version 1.4
+	* New: blank option for dropdown field (https://github.com/aprokopenko/justcustomfields/issues/2)
+	* New: sortable multiple fields (https://github.com/aprokopenko/justcustomfields/issues/19)
+	* New: Slug for all new fields will be started from underscore (https://github.com/aprokopenko/justcustomfields/issues/26)
+	* Bug fix: tinyMCE <p>/<br> tags (https://github.com/aprokopenko/justcustomfields/issues/13)
+	* Bug fix: thumbs not working on edit screens (https://github.com/aprokopenko/justcustomfields/issues/12)
+	* Bug fix: support of all capability types (https://github.com/aprokopenko/justcustomfields/issues/6)
 * Version 1.3.4
 	* Bug fix: JS error in related content field (https://github.com/aprokopenko/justcustomfields/issues/11)
 * Version 1.3.3

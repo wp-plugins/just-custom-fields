@@ -6,12 +6,13 @@ Description: This plugin add custom fields for standard and custom post types in
 Tags: custom, fields, custom fields, meta, post meta, object meta, editor
 Author: Alexander Prokopenko
 Author URI: http://justcoded.com/
-Version: 1.3.4
+Version: 1.4.0
 Donate link: http://justcoded.com/just-labs/just-custom-fields-for-wordpress-plugin/
 */
 
 define('JCF_ROOT', dirname(__FILE__));
 define('JCF_TEXTDOMAIN', 'just-custom-fields');
+define('JCF_VERSION', 1.4);
 
 require_once( JCF_ROOT.'/inc/class.field.php' );
 require_once( JCF_ROOT.'/inc/functions.fieldset.php' );
@@ -130,8 +131,6 @@ function jcf_admin_fields_page( $post_type ){
 	
 	$fieldsets = jcf_fieldsets_get();
 	$field_settings = jcf_field_settings_get();
-	//pa($fieldsets);
-	//pa($field_settings,1);
 	
 	// load template
 	include( JCF_ROOT . '/templates/fields_ui.tpl.php' );
@@ -179,20 +178,19 @@ function jcf_get_post_type(){
 
 // get registered post types
 function jcf_get_post_types( $format = 'single' ){
-	$params_post = array( 'capability_type' => 'post', 'show_ui' => true ); // To get all post_type depends post
-	$params_page = array( 'capability_type' => 'page', 'show_ui' => true ); // To get all post_type depends page
 	
-	if( $format != 'object' ){
-		$post_types = get_post_types( $params_post );
-		$page_types = get_post_types( $params_page );
-		$post_types = array_merge($post_types, $page_types);
+	$all_post_types = get_post_types(array('show_ui' => true ), 'object');
+	
+	$post_types = array();
+	
+	foreach($all_post_types as $key=>$val){
+		
+		//we should exclude 'revision' and 'nav menu items'
+		if($val == 'revision' || $val == 'nav_menu_item') continue;
+		
+		$post_types[$key] = $val;
 	}
-	else{
-		$post_types = get_post_types( $params_post, 'object' );
-		$page_types = get_post_types( $params_page, 'object' );
-		$post_types = array_merge($post_types, $page_types);
-	}
-	//pa($post_types,1);
+	
 	return $post_types;
 }
 
